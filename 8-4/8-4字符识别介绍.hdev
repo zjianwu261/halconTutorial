@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<l>read_image (Image, '素材.bmp')</l>
+<c></c>
+<c>*阈值分割</c>
+<l>threshold (Image, Region, 0, 10)</l>
+<l>connection (Region, ConnectedRegions)</l>
+<c></c>
+<l>select_shape (ConnectedRegions, SelectedRegions, 'area', 'and', 50, 200)</l>
+<c></c>
+<c>*读取训练结果</c>
+<l>read_ocr_class_mlp ('Industrial_A-Z+_Rej.omc', OCRHandle)</l>
+<c></c>
+<c>*字符识别</c>
+<l>do_ocr_multi_class_mlp (SelectedRegions, Image, OCRHandle, Class, Confidence)</l>
+<c></c>
+<c></c>
+<c>*字符识别</c>
+<l>closing_circle (SelectedRegions, RegionClosing, 20)</l>
+<l>do_ocr_multi_class_mlp (RegionClosing, Image, OCRHandle, Class1, Confidence1)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

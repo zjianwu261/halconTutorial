@@ -1,0 +1,7 @@
+C:\Users\haokunlee\Desktop\1101test\1101\1101\bin\Debug\1101.exe
+C:\Users\haokunlee\Desktop\1101test\1101\1101\bin\Debug\1101.pdb
+C:\Users\haokunlee\Desktop\1101test\1101\1101\obj\x86\Debug\_1101.Properties.Resources.resources
+C:\Users\haokunlee\Desktop\1101test\1101\1101\obj\x86\Debug\1101.csproj.GenerateResource.Cache
+C:\Users\haokunlee\Desktop\1101test\1101\1101\obj\x86\Debug\1101.exe
+C:\Users\haokunlee\Desktop\1101test\1101\1101\obj\x86\Debug\1101.pdb
+C:\Users\haokunlee\Desktop\1101test\1101\1101\obj\x86\Debug\_1101.Form1.resources

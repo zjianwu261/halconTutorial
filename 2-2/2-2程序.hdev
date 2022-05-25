@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>*方法1：读取图片</c>
+<l>read_image (Image22, '2-2案例用图.bmp')</l>
+<c></c>
+<c>*读取文件夹</c>
+<l>list_files ('文件夹', 'files', Files)</l>
+<c></c>
+<l>for Index := 0 to 1 by 1</l>
+<l>    read_image (Image, Files[Index])</l>
+<l>endfor</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<c></c>
+<c></c>
+<l>draw_region (Region, WindowHandle)</l>
+<c></c>
+<l>dev_set_draw ('margin')</l>
+<l>dev_display (Region)</l>
+<c></c>
+<c></c>
+<c></c>
+<c>*最小外接矩形2</c>
+<l>smallest_rectangle2 (Region, Row, Column, Phi, Length1, Length2)</l>
+<l>gen_rectangle2 (Rectangle, Row, Column, Phi, Length1, Length2)</l>
+<c></c>
+<c>*最小外接矩形1</c>
+<l>smallest_rectangle1 (Region, Row1, Column1, Row2, Column2)</l>
+<l>gen_rectangle1 (Rectangle1, Row1, Column1, Row2, Column2)</l>
+<c></c>
+<c>*凸集转换</c>
+<l>shape_trans (Region, RegionTrans, 'convex')</l>
+<l>convexity (Region, Convexity)</l>
+<c></c>
+<c>*获取区域的圆度</c>
+<l>circularity (RegionTrans, Circularity)</l>
+<c></c>
+<l>gen_circle (Circle, Row, Column, 100.5)</l>
+<l>convexity (Circle, Convexity1)</l>
+<c></c>
+<c>*获取外接圆</c>
+<l>smallest_circle (Region, Row3, Column3, Radius)</l>
+<l>gen_circle (Circle1, Row3, Column3, Radius)</l>
+<c></c>
+<l>region_features (Circle1, 'convexity', Value)</l>
+<c></c>
+<c>*集合</c>
+<l>concat_obj (Region, Rectangle, ObjectsConcat)</l>
+<l>count_obj (ObjectsConcat, Number)</l>
+<l>select_shape (ObjectsConcat, SelectedRegions, ['convexity','area'], 'or', [0.98,100], [1,1000])</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

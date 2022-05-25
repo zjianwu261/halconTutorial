@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, 'C:/Users/haokunlee/Desktop/《halcon机器视觉教程》素材及程序/9-5/素材.bmp')</l>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<c as_id="measure1d" as_name="Measure 02" as_grp="[2,1]" as_ord="1"></c>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[2,1]" as_ord="2">AmplitudeThreshold := 40</l>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[2,1]" as_ord="3">RoiWidthLen2 := 5</l>
+<c as_id="measure1d" as_name="Measure 02" as_grp="[2,2]" as_ord="1"></c>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[2,2]" as_ord="2">LineRowStart_Measure_02_0 := 138.179</l>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[2,2]" as_ord="3">LineColumnStart_Measure_02_0 := 828</l>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[2,2]" as_ord="4">LineRowEnd_Measure_02_0 := 131.449</l>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[2,2]" as_ord="5">LineColumnEnd_Measure_02_0 := 395.501</l>
+<c></c>
+<c as_id="measure1d" as_name="Measure 02" as_grp="[2,3]" as_ord="1"></c>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[2,3]" as_ord="2">TmpCtrl_Row := 0.5*(LineRowStart_Measure_02_0+LineRowEnd_Measure_02_0)</l>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[2,3]" as_ord="3">TmpCtrl_Column := 0.5*(LineColumnStart_Measure_02_0+LineColumnEnd_Measure_02_0)</l>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[2,3]" as_ord="4">TmpCtrl_Dr := LineRowStart_Measure_02_0-LineRowEnd_Measure_02_0</l>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[2,3]" as_ord="5">TmpCtrl_Dc := LineColumnEnd_Measure_02_0-LineColumnStart_Measure_02_0</l>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[2,3]" as_ord="6">TmpCtrl_Phi := atan2(TmpCtrl_Dr, TmpCtrl_Dc)</l>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[2,3]" as_ord="7">TmpCtrl_Len1 := 0.5*sqrt(TmpCtrl_Dr*TmpCtrl_Dr + TmpCtrl_Dc*TmpCtrl_Dc)</l>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[2,3]" as_ord="8">TmpCtrl_Len2 := RoiWidthLen2</l>
+<c></c>
+<c as_id="measure1d" as_name="Measure 02" as_grp="[2,3]" as_ord="10">*测量矩形</c>
+<l>get_image_size (GrayImage, Width, Height)</l>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[2,3]" as_ord="11">gen_measure_rectangle2 (TmpCtrl_Row, TmpCtrl_Column, TmpCtrl_Phi, TmpCtrl_Len1, TmpCtrl_Len2, 1600, 1200, 'nearest_neighbor', MsrHandle_Measure_02_0)</l>
+<c as_id="measure1d" as_name="Measure 02" as_grp="[3,2]" as_ord="2"></c>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[3,2]" as_ord="3">copy_obj (GrayImage, Image, 1, 1)</l>
+<c></c>
+<c as_id="measure1d" as_name="Measure 02" as_grp="[4,1]" as_ord="1">* 测量算子</c>
+<l as_id="measure1d" as_name="Measure 02" as_grp="[4,3]" as_ord="1">measure_pos (Image, MsrHandle_Measure_02_0, 1, AmplitudeThreshold, 'all', 'all', Row_Measure_02_0, Column_Measure_02_0, Amplitude_Measure_02_0, Distance_Measure_02_0)</l>
+<c as_id="measure1d" as_name="Measure 02" as_grp="[4,6]" as_ord="1"></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

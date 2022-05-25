@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, '素材.PNG')</l>
+<l>rgb1_to_gray (Image, Image)</l>
+<c></c>
+<l>name:=['大','家','好','欢','迎','收','看']</l>
+<l>create_ocr_class_svm (8, 10, 'constant', 'default', name, 'rbf', 0.02, 0.05, 'one-versus-all', 'normalization', 10, OCRHandle)</l>
+<c></c>
+<l>threshold (Image, Region, 0, 200)</l>
+<l>closing_circle (Region, RegionClosing, 3.5)</l>
+<l>connection (RegionClosing, ConnectedRegions)</l>
+<c></c>
+<l>intersection (ConnectedRegions, Region, RegionIntersection)</l>
+<c></c>
+<l>select_shape (RegionIntersection, SelectedRegions, ['rect2_len1','rect2_len2'], 'and', [6,6], [12,12])</l>
+<c></c>
+<c>*区域提取排序</c>
+<l>sort_region (SelectedRegions, SortedRegions, 'first_point', 'true', 'column')</l>
+<c></c>
+<c>*循环保存样本</c>
+<l>for i := 1 to |name| by 1</l>
+<l>    select_obj (SortedRegions, Obj, i)</l>
+<l>    if (i==1)</l>
+<l>        write_ocr_trainf (Obj, Image, name[i-1], 'train_ocr')</l>
+<l>    else</l>
+<l>        append_ocr_trainf (Obj, Image, name[i-1], 'train_ocr')</l>
+<l>    endif</l>
+<l>    stop ()</l>
+<l>endfor</l>
+<c></c>
+<c>*训练样本</c>
+<l>trainf_ocr_class_svm (OCRHandle, 'train_ocr', 0.001, 'default')</l>
+<c></c>
+<c>*保存训练结果</c>
+<l>write_ocr_class_svm (OCRHandle, '1.osc')</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

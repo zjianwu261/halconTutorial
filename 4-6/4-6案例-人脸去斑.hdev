@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_open_file_dialog ('read_image', 'default', 'default', Selection)</l>
+<l>read_image (Image, Selection)</l>
+<c></c>
+<c>*均值滤波</c>
+<l>mean_image (Image, ImageMean, 7, 7)</l>
+<c></c>
+<l>gauss_filter (Image, ImageGauss, 9)</l>
+<c></c>
+<c>*导向滤波</c>
+<l>guided_filter (Image, Image, ImageGuided, 3, 10)</l>
+<c></c>
+<c>*双边</c>
+<l>bilateral_filter (Image, Image, ImageBilateral, 2, 10, [], [])</l>
+<c></c>
+<c>*各向异性滤波-PM</c>
+<l>anisotropic_diffusion (Image, ImageAniso, 'weickert', 3, 1, 10)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

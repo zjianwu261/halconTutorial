@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>8生成矩形</c>
+<l>gen_rectangle1 (Rectangle, 123, 196, 186, 356)</l>
+<l>gen_rectangle1 (Rectangle1, 123+20, 196+20, 186-20, 356-20)</l>
+<c></c>
+<c>*区域作差</c>
+<l>difference (Rectangle, Rectangle1, RegionDifference)</l>
+<c></c>
+<c>*区域合并</c>
+<l>union2 (RegionDifference, Rectangle1, RegionUnion)</l>
+<c></c>
+<c>*区域集合</c>
+<l>concat_obj (Rectangle, Rectangle1, ObjectsConcat)</l>
+<c></c>
+<c>*区域的选择</c>
+<l>select_obj (ObjectsConcat, ObjectSelected, 2)</l>
+<c></c>
+<c>*区域的填充</c>
+<l>fill_up (RegionDifference, RegionFillUp)</l>
+<c></c>
+<c>*区域的填充</c>
+<l>fill_up_shape (RegionDifference, RegionFillUp1, 'area', 1, 999999)</l>
+<c></c>
+<c>*骨架的求取</c>
+<l>skeleton (RegionFillUp, Skeleton)</l>
+<c></c>
+<c>*区域的合并</c>
+<l>union1 (ObjectsConcat, RegionUnion1)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

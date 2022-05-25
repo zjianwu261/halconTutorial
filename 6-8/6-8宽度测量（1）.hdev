@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image1, 'C:/Users/haokunlee/Desktop/《halcon机器视觉教程》素材及程序/6-8/1.bmp')</l>
+<c></c>
+<c></c>
+<l>count_channels (Image1, Channels)</l>
+<l>if (Channels==3)</l>
+<l>    rgb1_to_gray (Image1, Image1)</l>
+<l>endif</l>
+<c></c>
+<l>threshold (Image1, Region, 128, 255)</l>
+<c></c>
+<l>connection (Region, ConnectedRegions)</l>
+<c></c>
+<c>*形状选择</c>
+<l>select_shape (ConnectedRegions, SelectedRegions, ['rect2_len1','rect2_len2'], 'and', [100,50], [150,80])</l>
+<c></c>
+<l>select_shape (SelectedRegions, SelectedRegions1, 'convexity', 'and', 0.8, 1)</l>
+<c></c>
+<l>count_obj (SelectedRegions1, Number)</l>
+<c></c>
+<l>if (Number!=7)</l>
+<l>    stop ()</l>
+<l>endif</l>
+<c></c>
+<l>union1 (SelectedRegions1, RegionUnion)</l>
+<l>smallest_rectangle1 (RegionUnion, Row1, Column1, Row2, Column2)</l>
+<l>gen_rectangle1 (Rectangle, Row1+30, Column1-10, Row2-30, Column2+10)</l>
+<c></c>
+<l>reduce_domain (Image1, Rectangle, ImageReduced)</l>
+<l>edges_sub_pix (ImageReduced, Edges, 'canny', 1, 20, 40)</l>
+<c></c>
+<l>union_adjacent_contours_xld (Edges, UnionContours, 10, 1, 'attr_keep')</l>
+<l>select_shape_xld (UnionContours, SelectedXLD, 'contlength', 'and', 150, 99999)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

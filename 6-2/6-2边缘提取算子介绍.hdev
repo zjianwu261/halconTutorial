@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image1, 'C:/Users/haokunlee/Desktop/《halcon机器视觉教程》素材及程序/6-2/1.bmp')</l>
+<l>rgb1_to_gray (Image1, GrayImage)</l>
+<c></c>
+<l>roberts (GrayImage, ImageRoberts, 'gradient_sum')</l>
+<l>threshold (ImageRoberts, Region, 128, 255)</l>
+<c></c>
+<l>prewitt_amp (GrayImage, ImageEdgeAmp)</l>
+<l>threshold (ImageEdgeAmp, Region1, 128, 255)</l>
+<c></c>
+<l>sobel_amp (GrayImage, EdgeAmplitude, 'sum_abs', 3)</l>
+<l>* sobel_dir (GrayImage, EdgeAmplitude1, EdgeDirection, 'sum_abs', 3)</l>
+<c></c>
+<c>*图像的canny边缘</c>
+<l>edges_image (GrayImage, ImaAmp, ImaDir, 'canny', 1, 'nms', 30, 40)</l>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

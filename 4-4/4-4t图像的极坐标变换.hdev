@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<l>dev_open_file_dialog ('read_image', 'default', 'default', Selection)</l>
+<l>read_image (Image, Selection)</l>
+<c></c>
+<l>draw_circle (WindowHandle, Row, Column, Radius)</l>
+<l>gen_circle (Circle, Row, Column, Radius)</l>
+<l>reduce_domain (Image, Circle, ImageReduced)</l>
+<c></c>
+<c>*极坐标变换</c>
+<l>polar_trans_image_ext (ImageReduced, PolarTransImage, Row, Column, 0, 6.28319, 0.5*Radius, Radius, 6.28319*Radius, 800, 'nearest_neighbor')</l>
+<c></c>
+<c>*极坐标逆变换</c>
+<l>polar_trans_image_inv (PolarTransImage, XYTransImage, Row, Column, 0, 6.28319, 0.5*Radius, Radius, 6.28319*Radius, 800, 'nearest_neighbor')</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

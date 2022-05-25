@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_open_file_dialog ('read_image', 'default', 'default', Selection)</l>
+<l>read_image (Image,Selection)</l>
+<c>*通道分离</c>
+<l>decompose3 (Image, r, g, b)</l>
+<c>*彩色图转换为灰度图</c>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<c>*RGB通道转换为HSV通道</c>
+<l>trans_from_rgb (r, g, b, h, s, v, 'hsv')</l>
+<c></c>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, '素材')</l>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<c></c>
+<l>threshold (GrayImage, Region, 128, 255)</l>
+<c></c>
+<c>*区域腐蚀</c>
+<l>erosion_circle (Region, RegionErosion, 1.5)</l>
+<l>erosion_rectangle1 (Region, RegionErosion1, 11, 11)</l>
+<c></c>
+<l>gray_erosion_rect (GrayImage, ImageMin, 3, 3)</l>
+<c></c>
+<l>gray_erosion_shape (GrayImage, ImageMin1, 11, 11, 'octagon')</l>
+<c></c>
+<c>*灰度图像的膨胀</c>
+<l>gray_dilation_rect (GrayImage, ImageMax, 11, 11)</l>
+<l>gray_dilation_shape (GrayImage, ImageMax1, 11, 11, 'octagon')</l>
+<c></c>
+<c>*边缘</c>
+<l>erosion_circle (Region, RegionErosion2, 1.5)</l>
+<l>dilation_circle (Region, RegionDilation, 1.5)</l>
+<l>difference (RegionDilation, RegionErosion2, RegionDifference)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

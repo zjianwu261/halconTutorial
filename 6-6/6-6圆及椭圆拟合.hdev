@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<c></c>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<l>read_image (Image1, 'C:/Users/haokunlee/Desktop/《halcon机器视觉教程》素材及程序/6-6/1.bmp')</l>
+<c></c>
+<l>draw_circle (WindowHandle, Row, Column, Radius)</l>
+<l>gen_circle (Circle, Row, Column, Radius)</l>
+<l>reduce_domain (Image1, Circle, ImageReduced)</l>
+<c></c>
+<l>edges_sub_pix (ImageReduced, Edges, 'canny', 1, 10, 20)</l>
+<c></c>
+<l>select_shape_xld (Edges, SelectedXLD, 'contlength', 'and', 80, 99999)</l>
+<c></c>
+<l>segment_contours_xld (SelectedXLD, ContoursSplit, 'lines_circles', 5, 4, 2)</l>
+<c></c>
+<c>*求长度</c>
+<l>length_xld (ContoursSplit, Length)</l>
+<l>tuple_max (Length, Max)</l>
+<c></c>
+<l>select_shape_xld (ContoursSplit, SelectedXLD1, 'contlength', 'and', Max-1, 99999)</l>
+<c></c>
+<c>*圆的拟合</c>
+<l>fit_circle_contour_xld (SelectedXLD1, 'algebraic', -1, 0, 0, 3, 2, Row1, Column1, Radius1, StartPhi, EndPhi, PointOrder)</l>
+<c></c>
+<l>gen_circle (Circle1, Row1, Column1, Radius1)</l>
+<l>gen_circle_contour_xld (ContCircle, Row1, Column1, Radius1, 0, 6.28, 'positive', 1)</l>
+<c></c>
+<c></c>
+<c>*椭圆的拟合</c>
+<l>fit_ellipse_contour_xld (SelectedXLD1, 'fitzgibbon', -1, 0, 0, 200, 3, 2, Row2, Column2, Phi, Radius11, Radius2, StartPhi1, EndPhi1, PointOrder1)</l>
+<l>gen_ellipse (Ellipse, Row2, Column2, Phi, Radius11, Radius2)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

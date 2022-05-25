@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="find_image_region">
+<interface>
+<io>
+<par name="Image" base_type="iconic" dimension="0"/>
+</io>
+<oo>
+<par name="SelectedRegions" base_type="iconic" dimension="0"/>
+</oo>
+<ic>
+<par name="input_area1" base_type="ctrl" dimension="0"/>
+<par name="input_area2" base_type="ctrl" dimension="0"/>
+</ic>
+</interface>
+<body>
+<l>rgb_2_hsv (Image, H1)</l>
+<c></c>
+<l>count_channels (Image, Channels)</l>
+<l>if (Channels!=3)</l>
+<l>    return ()</l>
+<l>endif</l>
+<c></c>
+<l>local_threshold (H1, Region, 'adapted_std_deviation', 'dark', [], [])</l>
+<l>connection (Region, ConnectedRegions)</l>
+<l>select_shape (ConnectedRegions, SelectedRegions, 'area', 'and', input_area1, input_area2)</l>
+<l>return ()</l>
+</body>
+<docu id="find_image_region">
+<parameters>
+<parameter id="Image"/>
+<parameter id="SelectedRegions"/>
+<parameter id="input_area1"/>
+<parameter id="input_area2"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

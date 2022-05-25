@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<c></c>
+<l>read_image (Image, '素材')</l>
+<c></c>
+<c>*创建训练区域</c>
+<l>gen_empty_obj (Union_Obj)</l>
+<l>for Index := 1 to 5 by 1</l>
+<l>    draw_region (Region, WindowHandle)</l>
+<l>    concat_obj (Union_Obj, Region, Union_Obj)</l>
+<l>endfor</l>
+<c></c>
+<c>*创建分类器</c>
+<l>create_class_svm (3, 'rbf', 0.02, 0.001, 5, 'one-versus-all', 'normalization', 10, SVMHandle)</l>
+<l>add_samples_image_class_svm (Image, Union_Obj, SVMHandle)</l>
+<c></c>
+<c>*训练</c>
+<l>train_class_svm (SVMHandle, 0.001, 'default')</l>
+<l>classify_image_class_svm (Image, ClassRegions, SVMHandle)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

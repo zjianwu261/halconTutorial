@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image1, '1.bmp')</l>
+<c></c>
+<l>rgb1_to_gray (Image1, GrayImage)</l>
+<c></c>
+<c>*缩小ROI</c>
+<l>fast_threshold (GrayImage, Region, 150, 255, 20)</l>
+<l>connection (Region, ConnectedRegions)</l>
+<l>sort_region (ConnectedRegions, SortedRegions, 'first_point', 'true', 'row')</l>
+<c></c>
+<l>select_shape (SortedRegions, SelectedRegions, ['rect2_len1','rect2_len2'], 'and', [110,50], [150,70])</l>
+<c></c>
+<l>sort_region (SelectedRegions, SortedRegions1, 'first_point', 'true', 'column')</l>
+<l>select_obj (SortedRegions1, ObjectSelected, 3)</l>
+<c></c>
+<c>*膨胀</c>
+<l>dilation_circle (ObjectSelected, RegionDilation, 5)</l>
+<l>reduce_domain (GrayImage, RegionDilation, ImageReduced)</l>
+<c></c>
+<c>*canny边缘提取</c>
+<l>edges_sub_pix (ImageReduced, Edges, 'canny', 1, 10, 20)</l>
+<c></c>
+<c>******上一节</c>
+<c></c>
+<l>select_shape_xld (Edges, SelectedXLD, 'contlength', 'and', 80, 99999)</l>
+<c></c>
+<c>*</c>
+<l>union_adjacent_contours_xld (SelectedXLD, UnionContours, 100, 1, 'attr_keep')</l>
+<c></c>
+<c>*xld坐标的</c>
+<l>get_contour_xld (UnionContours, Row, Col)</l>
+<c></c>
+<c>**上一节程序</c>
+<l>segment_contours_xld (UnionContours, ContoursSplit, 'lines_circles', 5, 4, 2)</l>
+<c></c>
+<l>select_shape_xld (SelectedXLD, SelectedXLD1, 'phi', 'and', -0.1, 0.1)</l>
+<c></c>
+<l>fit_line_contour_xld (SelectedXLD1, 'huber', -1, 0, 5, 2, RowBegin, ColBegin, RowEnd, ColEnd, Nr, Nc, Dist)</l>
+<c></c>
+<c>*</c>
+<l>gen_contour_polygon_xld (Contour, [RowBegin,RowEnd], [ColBegin-10,ColEnd])</l>
+<c></c>
+<l>select_shape_xld (SelectedXLD, SelectedXLD2, 'phi', 'and', 0.2, 3.14)</l>
+<c></c>
+<l>concat_obj (SelectedXLD2, Contour, ObjectsConcat)</l>
+<c></c>
+<l>union_adjacent_contours_xld (ObjectsConcat, UnionContours1, 10, 1, 'attr_keep')</l>
+<c></c>
+<l>gen_region_contour_xld (UnionContours1, Region1, 'filled')</l>
+<c></c>
+<l>opening_circle (Region1, RegionOpening, 3.5)</l>
+<c></c>
+<l>boundary (RegionOpening, RegionBorder, 'inner')</l>
+<c></c>
+<l>dilation_circle (RegionBorder, RegionDilation1, 3.5)</l>
+<c></c>
+<l>reduce_domain (GrayImage, RegionDilation1, ImageReduced1)</l>
+<c></c>
+<l>edges_sub_pix (ImageReduced1, Edges1, 'canny', 1, 20, 40)</l>
+<c></c>
+<l>union_adjacent_contours_xld (Edges1, UnionContours2, 10, 1, 'attr_keep')</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

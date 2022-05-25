@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>*打开视频</c>
+<l>open_framegrabber ('DirectFile', 1, 1, 0, 0, 0, 0, 'default', 8, 'rgb', -1, 'false', '2-3视频素材.avi', 'default', -1, -1, AcqHandle)</l>
+<c></c>
+<c></c>
+<l>get_framegrabber_param (AcqHandle, 'first_frame', Value0)</l>
+<l>get_framegrabber_param (AcqHandle, 'last_frame', Value1) </l>
+<c></c>
+<c></c>
+<l>grab_image_start (AcqHandle, -1)</l>
+<l>for i:= Value0 to Value1-1 by 1 </l>
+<l>    grab_image (Image, AcqHandle)</l>
+<l>    get_image_size (Image, Width, Height)</l>
+<l>    dev_display (Image)</l>
+<l>    stop ()</l>
+<l>endfor </l>
+<c></c>
+<l>* close_framegrabber (AcqHandle)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

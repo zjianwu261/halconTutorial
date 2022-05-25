@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<l>dev_update_off ()</l>
+<c></c>
+<c>*开始时间</c>
+<l>count_seconds (T1)</l>
+<l>read_image (Image1, 'C:/Users/haokunlee/Desktop/《halcon机器视觉教程》素材及程序/6-8/1.bmp')</l>
+<c></c>
+<c></c>
+<l>draw_rectangle1 (WindowHandle, Row1, Column1, Row2, Column2)</l>
+<l>gen_rectangle1 (Rectangle, Row1, Column1, Row2, Column2)</l>
+<c></c>
+<l>reduce_domain (Image1, Rectangle, ImageReduced)</l>
+<c></c>
+<c>*投影算子</c>
+<l>gray_projections (Rectangle, ImageReduced, 'simple', HorProjection, VertProjection)</l>
+<c></c>
+<l>create_funct_1d_array (VertProjection, Function)</l>
+<l>smooth_funct_1d_gauss (Function, 2, SmoothedFunction)</l>
+<c></c>
+<c>*一阶导数</c>
+<l>derivate_funct_1d (SmoothedFunction, 'first', Derivative)</l>
+<c></c>
+<c>*获得函数的极值点</c>
+<l>smooth_funct_1d_gauss (Derivative, 2, SmoothedFunction1)</l>
+<l>local_min_max_funct_1d (SmoothedFunction1, 'strict_min_max', 'true', Min, Max)</l>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

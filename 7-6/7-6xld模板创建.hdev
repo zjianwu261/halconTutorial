@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<c></c>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<l>read_image (Image1, 'C:/Users/haokunlee/Desktop/《halcon机器视觉教程》素材及程序/7-5/1.bmp')</l>
+<l>rgb1_to_gray (Image1, GrayImage)</l>
+<c></c>
+<l>draw_rectangle1 (WindowHandle, Row1, Column1, Row2, Column2)</l>
+<l>gen_rectangle1 (Rectangle, Row1, Column1, Row2, Column2)</l>
+<l>smallest_rectangle2 (Rectangle, Row, Column, Phi, Length1, Length2)</l>
+<l>gen_rectangle2_contour_xld (Rectangle1, Row, Column, Phi, Length1, Length2)</l>
+<c></c>
+<c>*创建xld模板</c>
+<l>create_shape_model_xld (Rectangle1, 'auto', -0.2, 0.2, 0.01, 'auto', 'ignore_local_polarity', 5, ModelID)</l>
+<c></c>
+<c>*shm</c>
+<l>write_shape_model (ModelID, '1.shm')</l>
+<l>write_object (Rectangle1, '1.hobj')</l>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

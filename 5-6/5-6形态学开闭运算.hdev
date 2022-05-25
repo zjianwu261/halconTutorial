@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<l>read_image (Image, '素材')</l>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<c></c>
+<l>threshold (GrayImage, Region, 128, 255)</l>
+<c></c>
+<c>*开运算</c>
+<l>opening_circle (Region, RegionOpening, 1)</l>
+<c></c>
+<l>opening_rectangle1 (Region, RegionOpening1, 3, 1)</l>
+<c></c>
+<c>*闭运算</c>
+<l>closing_circle (Region, RegionClosing, 1.5)</l>
+<l>closing_rectangle1 (Region, RegionClosing1, 10, 10)</l>
+<c></c>
+<c>*开闭</c>
+<l>gray_opening_rect (GrayImage, ImageOpening, 11, 11)</l>
+<c></c>
+<l>gray_closing_rect (GrayImage, ImageClosing, 11, 11)</l>
+<c></c>
+<c></c>
+<l>connection (Region, ConnectedRegions)</l>
+<c></c>
+<l>closing_circle (Region, RegionClosing2, 1.5)</l>
+<l>connection (RegionClosing2, ConnectedRegions1)</l>
+<c></c>
+<c>*求交际</c>
+<l>draw_rectangle1 (WindowHandle, Row1, Column1, Row2, Column2)</l>
+<l>gen_rectangle1 (Rectangle, Row1, Column1, Row2, Column2)</l>
+<c></c>
+<l>intersection (Rectangle, RegionClosing2, RegionIntersection)</l>
+<c></c>
+<l>intersection (RegionIntersection, Region, RegionIntersection1)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

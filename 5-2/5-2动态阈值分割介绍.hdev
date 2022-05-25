@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_open_file_dialog ('read_image', 'default', 'default', Selection)</l>
+<l>read_image (Image, Selection)</l>
+<c></c>
+<c>*图像转换为灰度图</c>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<c></c>
+<c>*动态阈值分割</c>
+<l>mean_image (GrayImage, ImageMean, 50, 50)</l>
+<l>gauss_filter (GrayImage, ImageGauss, 9)</l>
+<l>median_image (GrayImage, ImageMedian, 'circle', 25, 'mirrored')</l>
+<c></c>
+<l>dyn_threshold (GrayImage, ImageMedian, RegionDynThresh, 100, 'light')</l>
+<c></c>
+<c></c>
+<c>*</c>
+<l>local_threshold (GrayImage, Region, 'adapted_std_deviation', 'light', [], [])</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

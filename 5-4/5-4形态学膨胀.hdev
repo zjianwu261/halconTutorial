@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, '素材')</l>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<c></c>
+<l>threshold (GrayImage, Region, 128, 255)</l>
+<c></c>
+<c>*圆形膨胀</c>
+<l>dilation_circle (Region, RegionDilation, 2)</l>
+<c></c>
+<c>*矩阵</c>
+<l>dilation_rectangle1 (Region, RegionDilation1, 1, 31)</l>
+<c></c>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, 'C:/Users/haokunlee/Desktop/《halcon机器视觉教程》素材及程序/9-7/素材.png')</l>
+<c></c>
+<c>*彩色图转换为HSV图</c>
+<l>rgb_2_hsv (Image, H)</l>
+<c></c>
+<c>*没有参数</c>
+<c></c>
+<l>find_image_region (Image, SelectedRegions, 100, 99999)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

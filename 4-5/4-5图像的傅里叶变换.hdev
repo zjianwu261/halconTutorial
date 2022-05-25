@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_open_file_dialog ('read_image', 'default', 'default', Selection)</l>
+<l>read_image (Image, Selection)</l>
+<c></c>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<c></c>
+<c>*傅里叶变换</c>
+<l>fft_image (GrayImage, ImageFFT)</l>
+<c></c>
+<l>area_center (ImageFFT, Area, Row, Column)</l>
+<c></c>
+<l>gen_circle (Circle, Row, Column, 200)</l>
+<l>gen_circle (Circle1, Row, Column, 1000)</l>
+<l>difference (Circle1, Circle, RegionDifference)</l>
+<c></c>
+<c></c>
+<l>paint_region (RegionDifference, ImageFFT, ImageResult, 0, 'fill')</l>
+<c></c>
+<c>*</c>
+<l>fft_image_inv (ImageResult, ImageFFTInv)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

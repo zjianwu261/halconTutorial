@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.0.1">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<l>dev_update_off ()</l>
+<c></c>
+<c>*开始时间</c>
+<l>count_seconds (T1)</l>
+<l>read_image (Image1, '1.bmp')</l>
+<c></c>
+<c></c>
+<l>dev_display (Image1)</l>
+<c></c>
+<l>gen_empty_obj (rect)</l>
+<c></c>
+<l>for i := 1 to 7 by 1</l>
+<l>    draw_rectangle1 (WindowHandle, Row1, Column1, Row2, Column2)</l>
+<l>    gen_rectangle1 (Rectangle, Row1, Column1, Row2, Column2)</l>
+<l>    concat_obj (rect, Rectangle, rect)</l>
+<l>endfor</l>
+<c></c>
+<l>stop ()</l>
+<c></c>
+<c>*结果数组</c>
+<l>a:=[]</l>
+<c></c>
+<l>for Index := 1 to 7 by 1</l>
+<l>    select_obj (rect, ObjectSelected, Index)</l>
+<l>    reduce_domain (Image1, ObjectSelected, ImageReduced)</l>
+<c>    </c>
+<c>    *投影算子</c>
+<l>    gray_projections (ObjectSelected, ImageReduced, 'simple', HorProjection, VertProjection)</l>
+<c>    </c>
+<l>    create_funct_1d_array (VertProjection, Function)</l>
+<l>    smooth_funct_1d_gauss (Function, 2, SmoothedFunction)</l>
+<c>    </c>
+<c>    *一阶导数</c>
+<l>    derivate_funct_1d (SmoothedFunction, 'first', Derivative)</l>
+<c>    </c>
+<c>    *获得函数的极值点</c>
+<l>    smooth_funct_1d_gauss (Derivative, 2, SmoothedFunction1)</l>
+<l>    local_min_max_funct_1d (SmoothedFunction1, 'strict_min_max', 'true', Min, Max)</l>
+<c>    </c>
+<c>    *上一节课</c>
+<l>    x:=[Min,Max]</l>
+<l>    get_y_value_funct_1d (SmoothedFunction1, x, 'constant', Y)</l>
+<c>    </c>
+<l>    result:=[]</l>
+<l>    for i := 0 to |Y|-1 by 1</l>
+<l>        if (abs(Y[i])&gt;10)</l>
+<l>            result:=[result,x[i]]</l>
+<l>        endif</l>
+<l>    endfor</l>
+<c>    </c>
+<l>    d:=abs(result[0]-result[1])</l>
+<l>    a:=[a,d]</l>
+<l>    stop ()</l>
+<l>endfor</l>
+<c></c>
+<l>tuple_mean (a, Mean)</l>
+<l>disp_message (WindowHandle, Mean, 'window', 0, 0, 'black', 'true')</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>*矩阵的创建</c>
+<l>m:=[1,2,3,4]</l>
+<l>create_matrix (2, 2, [1,2,3,4], MatrixID)</l>
+<c></c>
+<c>*获取值</c>
+<l>get_value_matrix (MatrixID, 1, 0, Value)</l>
+<l>get_full_matrix (MatrixID, Values)</l>
+<c></c>
+<c>*矩阵的逆</c>
+<c></c>
+<l>invert_matrix (MatrixID, 'general', 0, MatrixInvID)</l>
+<l>get_full_matrix (MatrixInvID, Values1)</l>
+<c></c>
+<c>*矩阵的范数</c>
+<l>norm_matrix (MatrixInvID, '2-norm', Value1)</l>
+<c></c>
+<c></c>
+<l>A:=[1,5,7,8,9,10]</l>
+<l>tuple_length (A, Length)</l>
+<l>create_matrix (3, 2, A, MatrixID1)</l>
+<l>get_full_matrix (MatrixID1, Values2)</l>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

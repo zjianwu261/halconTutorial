@@ -1,0 +1,10 @@
+C:\Users\haokunlee\Desktop\1107\1107test\1107test\bin\x64\Debug\1107test.exe.config
+C:\Users\haokunlee\Desktop\1107\1107test\1107test\bin\x64\Debug\1107test.exe
+C:\Users\haokunlee\Desktop\1107\1107test\1107test\bin\x64\Debug\1107test.pdb
+C:\Users\haokunlee\Desktop\1107\1107test\1107test\bin\x64\Debug\halcondotnet.dll
+C:\Users\haokunlee\Desktop\1107\1107test\1107test\bin\x64\Debug\halcondotnet.xml
+C:\Users\haokunlee\Desktop\1107\1107test\1107test\obj\x64\Debug\_1107test.Form1.resources
+C:\Users\haokunlee\Desktop\1107\1107test\1107test\obj\x64\Debug\_1107test.Properties.Resources.resources
+C:\Users\haokunlee\Desktop\1107\1107test\1107test\obj\x64\Debug\1107test.csproj.GenerateResource.Cache
+C:\Users\haokunlee\Desktop\1107\1107test\1107test\obj\x64\Debug\1107test.exe
+C:\Users\haokunlee\Desktop\1107\1107test\1107test\obj\x64\Debug\1107test.pdb

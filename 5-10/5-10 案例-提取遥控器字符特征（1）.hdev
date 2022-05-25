@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, 'C:/Users/haokunlee/Desktop/《halcon机器视觉教程》素材及程序/5-10/素材.jpg')</l>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<c></c>
+<l>threshold (GrayImage, Region, 150, 255)</l>
+<c></c>
+<c>*开操作</c>
+<l>opening_circle (Region, RegionOpening, 3.5)</l>
+<c></c>
+<l>connection (RegionOpening, ConnectedRegions)</l>
+<c></c>
+<c>*面积最大</c>
+<l>select_shape_std (ConnectedRegions, SelectedRegions, 'max_area', 70)</l>
+<c></c>
+<l>fill_up (SelectedRegions, RegionFillUp)</l>
+<c></c>
+<c>*裁剪</c>
+<l>reduce_domain (GrayImage, RegionFillUp, ImageReduced)</l>
+<c></c>
+<l>* mean_image (ImageReduced, ImageMean, 30, 30)</l>
+<l>* dyn_threshold (ImageReduced, ImageMean, RegionDynThresh, 10, 'dark')</l>
+<l>fast_threshold (ImageReduced, Region1, 0, 100, 20)</l>
+<c></c>
+<l>orientation_region (Region1, Phi)</l>
+<l>area_center (Region1, Area, Row, Column)</l>
+<l>vector_angle_to_rigid (Row, Column, Phi,  Row, Column, -3.14*0.5, HomMat2D)</l>
+<c></c>
+<l>affine_trans_region (Region1, RegionAffineTrans, HomMat2D, 'nearest_neighbor')</l>
+<c></c>
+<l>closing_circle (RegionAffineTrans, RegionClosing, 3.5)</l>
+<l>dilation_rectangle1 (RegionClosing, RegionDilation, 1, 11)</l>
+<c></c>
+<l>connection (RegionDilation, ConnectedRegions1)</l>
+<l>select_shape (ConnectedRegions1, SelectedRegions1, 'area', 'and', 150, 99999)</l>
+<c></c>
+<c></c>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

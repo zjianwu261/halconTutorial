@@ -1,0 +1,4 @@
+C:\Users\haokunlee\Desktop\1107\1107test\1107test\obj\x86\Debug\_1107test.Form1.resources
+C:\Users\haokunlee\Desktop\1107\1107test\1107test\obj\x86\Debug\_1107test.Properties.Resources.resources
+C:\Users\haokunlee\Desktop\1107\1107test\1107test\obj\x86\Debug\1107test.csproj.GenerateResource.Cache
+C:\Users\haokunlee\Desktop\1107\1107test\1107test\bin\Debug\1107test.exe.config

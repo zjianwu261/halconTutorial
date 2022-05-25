@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_open_file_dialog ('read_image', 'default', 'default', Selection)</l>
+<l>read_image (Image, Selection)</l>
+<c></c>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<c></c>
+<c>*获得图像的区域</c>
+<l>get_domain (GrayImage, Domain)</l>
+<l>get_region_points (Domain, Rows, Columns)</l>
+<c></c>
+<l>get_image_size (GrayImage, Width, Height)</l>
+<l>gen_image_const (Image1, 'byte', Width, Height)</l>
+<c></c>
+<c>*获得图像的灰度</c>
+<l>get_grayval (GrayImage, Rows, Columns, Grayval)</l>
+<c></c>
+<c></c>
+<l>set_grayval (Image1, Rows, Columns, Grayval)</l>
+<c></c>
+<c>*循环</c>
+<l>for Index := 1 to 100 by 1</l>
+<l>    Grayval[Index]:=255</l>
+<l>endfor</l>
+<c></c>
+<l>set_grayval (Image1, Rows, Columns, Grayval)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

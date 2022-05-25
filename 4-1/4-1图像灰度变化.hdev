@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>*关闭过程更新</c>
+<l>dev_update_off ()</l>
+<c>*读取图片</c>
+<l>dev_open_file_dialog ('read_image', 'default', 'default', Selection)</l>
+<l>read_image (Image, Selection)</l>
+<c></c>
+<c>*图像转为灰度图</c>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<c></c>
+<c>*图像相加</c>
+<l>add_image (GrayImage, GrayImage, ImageResult, 0.8, 100)</l>
+<c></c>
+<c>*获得图像区域坐标</c>
+<l>get_domain (GrayImage, Domain)</l>
+<l>get_region_points (Domain, Rows, Columns)</l>
+<c></c>
+<c>*获得图像灰度</c>
+<l>get_grayval (GrayImage, Rows, Columns, Grayval)</l>
+<c></c>
+<c>*循环改变值</c>
+<l>for i := 0 to |Grayval|-1 by 1</l>
+<l>    if (Grayval[i]&gt;100)</l>
+<l>        Grayval[i]:=255</l>
+<l>    endif</l>
+<l>endfor</l>
+<c></c>
+<c>*灰度赋值</c>
+<l>set_grayval (ImageResult, Rows, Columns, Grayval)</l>
+<c></c>
+<c>*图像取对数</c>
+<l>log_image (GrayImage, LogImage, 'e')</l>
+<c></c>
+<c>*图像取指数</c>
+<l>exp_image (LogImage, ExpImage, 'e')</l>
+<c></c>
+<c>*图像均衡化</c>
+<l>equ_histo_image (GrayImage, ImageEquHisto)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

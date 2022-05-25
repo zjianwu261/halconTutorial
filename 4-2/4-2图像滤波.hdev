@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_open_file_dialog ('read_image', 'default', 'default', Selection)</l>
+<l>read_image (Image, Selection)</l>
+<c></c>
+<c>*均值滤波</c>
+<l>mean_image (Image, ImageMean, 25,25)</l>
+<c></c>
+<c>*zhng'zh</c>
+<l>median_image (Image, ImageMedian, 'circle', 7, 'mirrored')</l>
+<c></c>
+<l>add_noise_white (Image, ImageNoise, 10)</l>
+<l>median_image (ImageNoise, ImageMedian1, 'circle', 3, 'mirrored')</l>
+<c></c>
+<l>gauss_filter (ImageNoise, ImageGauss, 5)</l>
+<c></c>
+<l>guided_filter (ImageNoise, ImageNoise, ImageGuided, 3, 20)</l>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

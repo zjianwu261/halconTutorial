@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<c></c>
+<l>dev_open_file_dialog ('read_image', 'default', 'default', Selection)</l>
+<l>read_image (Image, Selection)</l>
+<c></c>
+<c>*画矩形区域</c>
+<l>draw_rectangle1 (WindowHandle, Row1, Column1, Row2, Column2)</l>
+<c>*生成矩形</c>
+<l>gen_rectangle1 (Rectangle, Row1, Column1, Row2, Column2)</l>
+<c>*区域裁剪</c>
+<l>reduce_domain (Image, Rectangle, ImageReduced)</l>
+<c></c>
+<c>*中心求取</c>
+<l>area_center (Rectangle, Area, Row, Column)</l>
+<c>*角度转换为灰度</c>
+<l>tuple_rad (-45, Rad)</l>
+<c></c>
+<c>*放射矩阵计算</c>
+<l>vector_angle_to_rigid (Row, Column, 0, Row, Column+50, Rad, HomMat2D)</l>
+<c></c>
+<c>*图像旋转</c>
+<l>affine_trans_image (ImageReduced, ImageAffineTrans, HomMat2D, 'constant', 'false')</l>
+<l>affine_trans_region (Rectangle, RegionAffineTrans, HomMat2D, 'nearest_neighbor')</l>
+<c></c>
+<c>*直接定义旋转</c>
+<l>hom_mat2d_identity (H1)</l>
+<l>area_center (Image, Area1, Row3, Column3)</l>
+<l>hom_mat2d_rotate (H1,Rad, Column, Row, HomMat2DRotate)</l>
+<l>affine_trans_image (ImageReduced, ImageAffineTrans1, HomMat2DRotate, 'constant', 'false')</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

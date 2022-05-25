@@ -1,0 +1,13 @@
+C:\Users\haokunlee\Desktop\1104\1104test\1104test\bin\x64\Debug\1104test.exe.config
+C:\Users\haokunlee\Desktop\1104\1104test\1104test\bin\x64\Debug\1104test.exe
+C:\Users\haokunlee\Desktop\1104\1104test\1104test\bin\x64\Debug\1104test.pdb
+C:\Users\haokunlee\Desktop\1104\1104test\1104test\bin\x64\Debug\halcondotnet.dll
+C:\Users\haokunlee\Desktop\1104\1104test\1104test\bin\x64\Debug\halcondotnet.xml
+C:\Users\haokunlee\Desktop\1104\1104test\1104test\obj\x64\Debug\_1104test.Form1.resources
+C:\Users\haokunlee\Desktop\1104\1104test\1104test\obj\x64\Debug\_1104test.Properties.Resources.resources
+C:\Users\haokunlee\Desktop\1104\1104test\1104test\obj\x64\Debug\1104test.csproj.GenerateResource.Cache
+C:\Users\haokunlee\Desktop\1104\1104test\1104test\obj\x64\Debug\1104test.exe
+C:\Users\haokunlee\Desktop\1104\1104test\1104test\obj\x64\Debug\1104test.pdb
+C:\Users\haokunlee\Desktop\《halcon机器视觉教程》素材及程序\11-4\1104\1104test\1104test\bin\x64\Debug\1104test.exe.config
+C:\Users\haokunlee\Desktop\《halcon机器视觉教程》素材及程序\11-4\1104\1104test\1104test\obj\x64\Debug\1104test.exe
+C:\Users\haokunlee\Desktop\《halcon机器视觉教程》素材及程序\11-4\1104\1104test\1104test\obj\x64\Debug\1104test.pdb

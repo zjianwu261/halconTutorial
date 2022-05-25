@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image1, '1.bmp')</l>
+<c></c>
+<l>rgb1_to_gray (Image1, GrayImage)</l>
+<c></c>
+<c>*缩小ROI</c>
+<l>fast_threshold (GrayImage, Region, 150, 255, 20)</l>
+<l>connection (Region, ConnectedRegions)</l>
+<l>sort_region (ConnectedRegions, SortedRegions, 'first_point', 'true', 'row')</l>
+<c></c>
+<l>select_shape (SortedRegions, SelectedRegions, ['rect2_len1','rect2_len2'], 'and', [110,50], [150,70])</l>
+<c></c>
+<l>sort_region (SelectedRegions, SortedRegions1, 'first_point', 'true', 'column')</l>
+<l>select_obj (SortedRegions1, ObjectSelected, 3)</l>
+<c></c>
+<c>*膨胀</c>
+<l>dilation_circle (ObjectSelected, RegionDilation, 5)</l>
+<l>reduce_domain (GrayImage, RegionDilation, ImageReduced)</l>
+<c></c>
+<c>*canny边缘提取</c>
+<l>edges_sub_pix (ImageReduced, Edges, 'canny', 1, 10, 20)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (C79iJtv5yGZq36Gm3g, '1.png')</l>
+<l>rgb1_to_gray (C79iJtv5yGZq36Gm3g, GrayImage)</l>
+<c></c>
+<c>*创建条码模型</c>
+<l>create_bar_code_model ([], [], BarCodeHandle)</l>
+<c></c>
+<c>*条码识别</c>
+<l>find_bar_code (GrayImage, SymbolRegions1, BarCodeHandle, 'auto', DecodedDataStrings3)</l>
+<c></c>
+<c></c>
+<c>*二维码识别</c>
+<l>read_image (Image, '2-UTF-8.png')</l>
+<l>rgb1_to_gray (Image, GrayImage1)</l>
+<c></c>
+<c>*创建二维码模型</c>
+<l>create_data_code_2d_model ('QR Code', [], [], DataCodeHandle)</l>
+<c></c>
+<c>*二维码识别</c>
+<l>find_data_code_2d (GrayImage1, SymbolXLDs2, DataCodeHandle, 'train', 'all', ResultHandles2, DecodedDataStrings)</l>
+<c></c>
+<c></c>
+<l>read_image (Image1, '3-GB2312.png')</l>
+<l>rgb1_to_gray (Image1, GrayImage2)</l>
+<l>find_data_code_2d (GrayImage2, SymbolXLDs1, DataCodeHandle, 'train', 'all', ResultHandles1, DecodedDataStrings2)</l>
+<c></c>
+<c>*清楚模型</c>
+<l>clear_bar_code_model (BarCodeHandle)</l>
+<l>clear_data_code_2d_model (DataCodeHandle)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

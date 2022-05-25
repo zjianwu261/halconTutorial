@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_open_file_dialog ('read_image', 'default', 'default', Selection)</l>
+<l>read_image (Image, Selection)</l>
+<c></c>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<c></c>
+<c>*二值化 类似OSTU</c>
+<l>binary_threshold (GrayImage, Region, 'max_separability', 'light', UsedThreshold)</l>
+<c></c>
+<c>*自动阈值分割（类似聚类）</c>
+<l>auto_threshold (GrayImage, Regions, 2)</l>
+<l>auto_threshold (GrayImage, Regions1, 12)</l>
+<c></c>
+<c>*分水岭阈值分割</c>
+<l>watersheds_threshold (GrayImage, Basins, 20)</l>
+<c></c>
+<l>get_domain (GrayImage, Domain)</l>
+<l>gray_histo (Domain, GrayImage, AbsoluteHisto, RelativeHisto)</l>
+<c></c>
+<l>histo_to_thresh (AbsoluteHisto, 2, MinThresh, MaxThresh)</l>
+<l>threshold (GrayImage, Region1, MinThresh, MaxThresh)</l>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

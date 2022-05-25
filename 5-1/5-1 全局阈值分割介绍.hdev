@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.1.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_open_file_dialog ('read_image', 'default', 'default', Selection)</l>
+<l>read_image (Image, Selection)</l>
+<c></c>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<c></c>
+<c>*全局阈值分割算子</c>
+<l>threshold (GrayImage, Region, 230, 255)</l>
+<c></c>
+<l>threshold (GrayImage, Regions, 232, 255)</l>
+<c></c>
+<l>fast_threshold (GrayImage, Region1, 232, 255, 35)</l>
+<c></c>
+<c>*连通域操作</c>
+<l>connection (Region1, ConnectedRegions)</l>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
